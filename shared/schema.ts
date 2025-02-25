@@ -48,3 +48,12 @@ export type Product = typeof products.$inferSelect;
 export type InsertProduct = z.infer<typeof insertProductSchema>;
 export type Contact = typeof contacts.$inferSelect;
 export type InsertContact = z.infer<typeof insertContactSchema>;
+
+// Add getProductById to the interface
+export interface IStorage {
+  getProducts(): Promise<Product[]>;
+  getProductsByCategory(category: string): Promise<Product[]>;
+  getFeaturedProducts(): Promise<Product[]>;
+  getProductById(id: number): Promise<Product | undefined>;
+  createContact(contact: InsertContact): Promise<Contact>;
+}

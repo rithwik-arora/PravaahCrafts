@@ -19,6 +19,20 @@ export async function registerRoutes(app: Express) {
     res.json(products);
   });
 
+  app.get("/api/products/:id", async (req, res) => {
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      return res.status(400).json({ error: "Invalid product ID" });
+    }
+
+    const product = await storage.getProductById(id);
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    res.json(product);
+  });
+
   app.post("/api/contact", async (req, res) => {
     const result = insertContactSchema.safeParse(req.body);
     if (!result.success) {

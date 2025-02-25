@@ -5,6 +5,7 @@ export interface IStorage {
   getProductsByCategory(category: string): Promise<Product[]>;
   getFeaturedProducts(): Promise<Product[]>;
   createContact(contact: InsertContact): Promise<Contact>;
+  getProductById(id: number): Promise<Product | undefined>;
 }
 
 export class MemStorage implements IStorage {
@@ -69,6 +70,9 @@ export class MemStorage implements IStorage {
     const newContact = { ...contact, id };
     this.contacts.set(id, newContact);
     return newContact;
+  }
+  async getProductById(id: number): Promise<Product | undefined> {
+    return this.products.get(id);
   }
 }
 
