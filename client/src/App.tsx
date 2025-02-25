@@ -26,7 +26,6 @@ function Router() {
           <Route path="/products/:id" component={ProductDetail} />
           <Route path="/gallery" component={Gallery} />
           <Route path="/contact" component={Contact} />
-          <Route path="/cart" component={Cart} />
           <Route component={NotFound} />
         </Switch>
       </main>
