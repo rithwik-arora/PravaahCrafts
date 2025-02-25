@@ -16,19 +16,21 @@ export default function Navbar() {
     <nav className="bg-background border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center h-16">
-          <Link href="/">
-            <a className="font-bold text-2xl text-primary">Pravaah</a>
+          <Link href="/" className="font-bold text-2xl text-primary">
+            Pravaah
           </Link>
-          
+
           <div className="hidden sm:flex space-x-8">
             {navLinks.map(link => (
-              <Link key={link.href} href={link.href}>
-                <a className={cn(
+              <Link 
+                key={link.href} 
+                href={link.href}
+                className={cn(
                   "text-foreground/60 hover:text-foreground transition-colors",
                   location === link.href && "text-primary font-medium"
-                )}>
-                  {link.label}
-                </a>
+                )}
+              >
+                {link.label}
               </Link>
             ))}
           </div>
